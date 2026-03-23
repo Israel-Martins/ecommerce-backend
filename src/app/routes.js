@@ -21,7 +21,7 @@ router.use("/products", productRoutes);
 router.use("/categories", categoryRoutes);
 
 router.use("/users", userRoutes);
-router.use("/orders", rotaProtegida, orderRoutes);
+router.use("/orders", orderRoutes);
 router.use("/reviews", reviewRoutes);
 router.use("/coupons", couponRoutes);
 router.use("/coupons/apply", applyCouponRoutes);

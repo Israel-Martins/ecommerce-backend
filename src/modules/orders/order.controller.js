@@ -14,7 +14,7 @@ class OrderController {
   static async findAll(req, res) {
     try {
       const isAdmin = req.usuario?.nivel === 'admin';
-      const pedidos = await OrderService.findAll(req.usuarioId, isAdmin);
+      const pedidos = await OrderService.findAll(req.params.id, isAdmin);
       res.json(pedidos);
     } catch (error) {
       res.status(400).json({ erro: error.message });

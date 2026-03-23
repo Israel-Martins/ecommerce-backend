@@ -48,6 +48,10 @@ class OrderService {
   }
 
   static async findAll(userId, isAdmin = false) {
+
+
+    console.log( 'dados',userId, isAdmin);
+    
     const where = isAdmin ? {} : { usuario_id: parseInt(userId) };
 
     const pedidos = await prisma.pedidos.findMany({
@@ -64,7 +68,7 @@ class OrderService {
       },
       orderBy: { id: 'desc' }
     });
-
+    
     return serialize(pedidos);
   }
 
