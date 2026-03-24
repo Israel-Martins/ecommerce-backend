@@ -43,7 +43,8 @@ class OrderService {
         }
       });
     }
-
+    console.log('pedido criado');
+    
     return serialize(pedido);
   }
 

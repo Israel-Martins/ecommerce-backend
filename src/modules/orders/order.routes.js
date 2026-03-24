@@ -2,7 +2,7 @@ const { Router } = require("express");
 const OrderController = require("./order.controller");
 const FreteController = require("./frete.controller");
 const { rotaProtegida } = require("../../shared/middlewares/token.middleware");
-const { verifyAccess } = require("../../shared/middlewares/access.middleware");
+// const { verifyAccess } = require("../../shared/middlewares/access.middleware");
 
 // Middlewares de validação para criação de pedido
 const validarUsuario = require("../../middlewares/validarUsuario.middleware");
@@ -16,20 +16,20 @@ const router = Router();
 
 router.post("/fretes", FreteController.calcular);
 
-// router.use(rotaProtegida);
+router.use(rotaProtegida);
 
 router.post(
   "/",
-  validarUsuario,
-  validarCEP,
-  validarCupom,
-  validarDesconto,
-  validarPrevisaoEntrega,
-  validarPedido,
+  // validarUsuario,
+  // validarCEP,
+  // validarCupom,
+  // validarDesconto,
+  // validarPrevisaoEntrega,
+  // validarPedido,
   OrderController.create
 );
 
-router.get("/:id", OrderController.findAll);
+router.get("/", OrderController.findAll);
 
 router.get("/:id", OrderController.findById);
 // router.put("/:id/status", verifyAccess, OrderController.updateStatus);

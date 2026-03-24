@@ -5,7 +5,7 @@ const AppError = require("../errors/AppError");
 function rotaProtegida(req, res, next) {
   try {
     console.log("rotaProtegida chamada para:", req.path);
-    console.log("authorization header:", req.headers.authorization);
+    // console.log("authorization header:", req.headers.authorization);
     let token = req.headers.authorization;
 
     if (!token) {
@@ -23,7 +23,7 @@ function rotaProtegida(req, res, next) {
     }
 
     const decoded = jwtLib.verify(token, jwt.secret);
-    console.log("decoded token:", decoded);
+    // console.log("decoded token:", decoded);
 
     req.usuarioId = decoded.id;
     req.usuarioToken = decoded;

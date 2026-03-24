@@ -2,10 +2,10 @@ const AppError = require("../errors/AppError");
 
 function apenasAdmin(req, res, next) {
   try {
-    if (!req.usuario) {
+    if (!req.usuarioToken) {
       throw new AppError("Usuário não autenticado", 401);
     }
-    if (req.usuario.nivel !== "admin") {
+    if (req.usuarioToken.nivel !== "admin") {
       throw new AppError("Acesso permitido apenas para administradores", 403);
     }
     next();

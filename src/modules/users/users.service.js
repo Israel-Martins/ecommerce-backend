@@ -14,6 +14,8 @@ class UsersService {
   async create(data) {
     const { senha, email, nome } = data;
 
+    console.log('entrou no criar usuario');
+    
     if (!senha) {
       throw new AppError("Senha é obrigatória", 400);
     }

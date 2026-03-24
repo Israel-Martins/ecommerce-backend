@@ -27,6 +27,9 @@ class UserRepository {
   async findAll() {
     return await prisma.usuarios.findMany({
       orderBy: { id: "desc" },
+      include: {
+        pedidos: true
+      },
       omit: { senha: true }
     });
   }

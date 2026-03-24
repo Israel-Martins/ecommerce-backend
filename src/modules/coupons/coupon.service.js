@@ -5,12 +5,12 @@ const serialize = require("../../shared/utils/serialize");
 class CouponService {
   static async create(data) {
     const { nome, quantidade, validade, valor_desc } = data;
-
+    const date = new Date(validade + "T00:00:00Z");
     const coupon = await prisma.cupons.create({
       data: {
         nome,
         quantidade: parseInt(quantidade),
-        validade: new Date(validade),
+        validade: date,
         valor_desc: parseInt(valor_desc),
       },
     });

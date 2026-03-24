@@ -3,7 +3,15 @@ const serialize = require("../../shared/utils/serialize");
 
 class CategoryService {
   static async create(data) {
-    const categoria = await prisma.categoria.create({ data });
+    console.log(data);
+    
+    const categoria = await prisma.categoria.create({ 
+      data: {
+        nome: data.nome
+      }
+     });
+    console.log(categoria);
+    
     return serialize(categoria);
   }
 
@@ -23,6 +31,8 @@ class CategoryService {
   }
 
   static async update(id, data) {
+    console.log(id);
+    
     const categoria = await prisma.categoria.update({
       where: { id: parseInt(id) },
       data
